@@ -1,7 +1,0 @@
-{
-  "tool_name": "Bash",
-  "tool_input_preview": "{\"command\":\"cd /Users/leesangmin/projects/mobile-dev-on-claude-code && ./scripts/sync-from-obsidian.sh --dry-run\",\"description\":\"Test dry-run\"}",
-  "error": "Exit code 1\n== Sync Source ==\n  /Users/leesangmin/Documents/Obsidian-0.1/75. Projects/Claude Code 모바일 개발\n\n== Sync Target ==\n  /Users/leesangmin/projects/mobile-dev-on-claude-code\n\nNo source .md files found in: /Users/leesangmin/Documents/Obsidian-0.1/75. Projects/Claude Code 모바일 개발",
-  "timestamp": "2026-04-11T14:27:01.636Z",
-  "retry_count": 1
-}
