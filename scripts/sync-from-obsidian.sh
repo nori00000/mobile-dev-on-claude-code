@@ -12,9 +12,9 @@ set -euo pipefail
 #   ./scripts/sync-from-obsidian.sh --message "메시지"  # 커스텀 커밋 메시지
 #
 # 환경변수:
-#   OBSIDIAN_VAULT  커스텀 볼트 경로 (기본: ~/Documents/Obsidian-0.1)
+#   OBSIDIAN_VAULT  커스텀 볼트 경로 (기본: ~/Documents/your-obsidian-vault)
 
-VAULT_DEFAULT="${HOME}/Documents/Obsidian-0.1"
+VAULT_DEFAULT="${HOME}/Documents/your-obsidian-vault"
 VAULT="${OBSIDIAN_VAULT:-${VAULT_DEFAULT}}"
 SOURCE_DIR="${VAULT}/75. Projects/Claude Code 모바일 개발"
 

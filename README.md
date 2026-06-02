@@ -1,5 +1,12 @@
 # Mobile Dev on Claude Code
 
+> **한눈에 / At a glance**
+>
+> A practical guide for continuing Claude Code development across a smartphone, SSH, tmux, and multiple machines.
+>
+> 한영 프로젝트 설명, 검색 키워드, 저작권 범위: [PROJECT.md](./PROJECT.md) · [NOTICE.md](./NOTICE.md) · [PUBLICATION_REVIEW.md](./PUBLICATION_REVIEW.md)
+
+
 > 스마트폰과 여러 Mac을 오가며 Claude Code로 개발을 이어가는 실전 가이드.
 > 개인 경험 기록 + 교육자료로 발전시키는 워크스페이스.
 
@@ -36,7 +43,7 @@ cl "작업 내용"
 ~/claude-code-setup/scripts/sync-current-branch.sh && cl "작업"
 
 # 스마트폰에서 긴급 수정
-ssh studio
+ssh your-main-mac
 cd <프로젝트>
 ~/claude-code-setup/scripts/check-cmux-health.sh
 cl "긴급 수정"
