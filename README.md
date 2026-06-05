@@ -20,18 +20,19 @@
 ## 관련 레포
 
 - [nori00000/claude-code-setup](https://github.com/nori00000/claude-code-setup) — 실제 셋업 스크립트
-- [nori00000/codex-setup](https://github.com/nori00000/codex-setup) — 자매 프로젝트 (codex 버전)
+- [nori00000/codex-setup](https://github.com/nori00000/codex-setup) — 자매 프로젝트 (codex 버전) <!-- DOC-SYNC: UNVERIFIED — 로컬 ~/codex-setup의 remote는 codex-setup-private.git. 공개 codex-setup 레포 존재 여부 수동 확인 필요 -->
 
 ## 목차
 
 | 노트 | 내용 |
 |------|------|
 | [00. 인덱스](00.%20%F0%9F%8F%9B%20Claude%20Code%20%EB%AA%A8%EB%B0%94%EC%9D%BC%20%EA%B0%9C%EB%B0%9C%20%EC%9D%B8%EB%8D%B1%EC%8A%A4.md) | 전체 허브 노트 |
-| [01. 핵심 개념](01.%20%ED%95%B5%EC%8B%AC%20%EA%B0%9C%EB%85%90%20%E2%80%94%20tmux%2C%20cl%2C%20clp.md) | tmux, cl, clp, clr, clf 쉬운 설명 |
+| [01. 핵심 개념](01.%20%ED%95%B5%EC%8B%AC%20%EA%B0%9C%EB%85%90%20%E2%80%94%20tmux%2C%20cl%2C%20clp.md) | tmux, cl, clp, clr, clf, cli 쉬운 설명 |
 | [02. 5단계 운영 플로우](02.%205%EB%8B%A8%EA%B3%84%20%EC%9A%B4%EC%98%81%20%ED%94%8C%EB%A1%9C%EC%9A%B0.md) | 시나리오별 사용법 |
 | [03. Termux 안드로이드 설정](03.%20Termux%20%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C%20%EC%84%A4%EC%A0%95.md) | Android 실전 설치 가이드 |
 | [04. 내 경험 기록](04.%20%EB%82%B4%20%EA%B2%BD%ED%97%98%20%EA%B8%B0%EB%A1%9D.md) | 실제 사용 로그 |
 | [05. 트러블슈팅 노트](05.%20%ED%8A%B8%EB%9F%AC%EB%B8%94%EC%8A%88%ED%8C%85%20%EB%85%B8%ED%8A%B8.md) | 시간순 문제/해결 |
+| [devlog/sessions/](devlog/sessions/) | 세션별 작업 로그 |
 
 ## 빠른 시작
 
@@ -40,17 +41,45 @@
 cl "작업 내용"
 
 # 다른 Mac에서 이어받기
-~/claude-code-setup/scripts/sync-current-branch.sh && cl "작업"
+cd <프로젝트>
+~/claude-code-setup/scripts/sync-current-branch.sh
+cl "작업"
 
 # 스마트폰에서 긴급 수정
 ssh your-main-mac
 cd <프로젝트>
 ~/claude-code-setup/scripts/check-cmux-health.sh
+~/claude-code-setup/scripts/sync-current-branch.sh
 cl "긴급 수정"
 
 # cmux 불가 시 fallback
 CL_NO_TMUX=1 cl "작업"
 ```
+
+## 유틸리티 스크립트
+
+| 스크립트 | 기능 |
+|----------|------|
+| `scripts/sync-from-obsidian.sh` | Obsidian 볼트 → 이 레포 동기화 (변경 감지 + 커밋 + 푸시) |
+
+```bash
+# Obsidian에서 노트 수정 후 레포에 반영
+./scripts/sync-from-obsidian.sh
+
+# 변경 사항만 확인 (커밋 없음)
+./scripts/sync-from-obsidian.sh --dry-run
+
+# 커밋까지만 (push 안 함)
+./scripts/sync-from-obsidian.sh --no-push
+
+# 커스텀 커밋 메시지
+./scripts/sync-from-obsidian.sh --message "docs: 트러블슈팅 노트 추가"
+```
+
+> `OBSIDIAN_VAULT` 기본값: `~/Documents/Obsidian-0.1` (볼트 루트만 지정)
+> 소스 디렉토리: `${OBSIDIAN_VAULT}/75. Projects/Claude Code 모바일 개발/` (스크립트 내 하드코딩)
+> 커스텀 볼트 루트: `OBSIDIAN_VAULT=~/다른볼트 ./scripts/sync-from-obsidian.sh`
+> ⚠️ 머신마다 볼트 위치가 다를 수 있음. 볼트가 없는 머신에서는 반드시 `OBSIDIAN_VAULT` 지정.
 
 ## 워크스페이스의 진화
 
