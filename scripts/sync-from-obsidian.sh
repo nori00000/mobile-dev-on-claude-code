@@ -95,7 +95,7 @@ if [[ "${DRY_RUN}" == true ]]; then
   exit 0
 fi
 
-# 4. Git 상태 확인
+# 5. Git 상태 확인
 cd "${REPO_ROOT}"
 if [[ -z "$(git status --porcelain 2>/dev/null)" ]]; then
   echo ""
@@ -103,19 +103,19 @@ if [[ -z "$(git status --porcelain 2>/dev/null)" ]]; then
   exit 0
 fi
 
-# 5. 변경 사항 표시
+# 6. 변경 사항 표시
 echo ""
 echo "== Changes =="
 git status --short
 echo ""
 
-# 6. 커밋
+# 7. 커밋
 MESSAGE="${CUSTOM_MESSAGE:-sync from obsidian: $(date -u +%Y-%m-%dT%H:%MZ)}"
 git add -A
 git commit -m "${MESSAGE}" --quiet
 echo "Committed: ${MESSAGE}"
 
-# 7. 푸시
+# 8. 푸시
 if [[ "${NO_PUSH}" == true ]]; then
   echo "Skipping push (--no-push)."
   exit 0

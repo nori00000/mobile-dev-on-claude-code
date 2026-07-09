@@ -20,7 +20,7 @@
 ## 관련 레포
 
 - [nori00000/claude-code-setup](https://github.com/nori00000/claude-code-setup) — 실제 셋업 스크립트
-- [nori00000/codex-setup](https://github.com/nori00000/codex-setup) — 자매 프로젝트 (codex 버전) <!-- DOC-SYNC: UNVERIFIED — 로컬 ~/codex-setup의 remote는 codex-setup-private.git. 공개 codex-setup 레포 존재 여부 수동 확인 필요 -->
+- [nori00000/codex-setup](https://github.com/nori00000/codex-setup) — 자매 프로젝트 (codex 버전) <!-- DOC-SYNC: 재검증 완료 (2026-07-07) — GitHub API로 nori00000/codex-setup 공개 레포 존재 재확인(private: false). 단, 로컬 ~/codex-setup의 git remote는 별도 비공개 미러(codex-setup-private.git)를 가리키므로 로컬 작업 시 주의 -->
 
 ## 목차
 
@@ -74,10 +74,13 @@ CL_NO_TMUX=1 cl "작업"
 
 # 커스텀 커밋 메시지
 ./scripts/sync-from-obsidian.sh --message "docs: 트러블슈팅 노트 추가"
+
+# 도움말
+./scripts/sync-from-obsidian.sh --help
 ```
 
-> `OBSIDIAN_VAULT` 기본값: `~/Documents/Obsidian-0.1` (볼트 루트만 지정)
-> 소스 디렉토리: `${OBSIDIAN_VAULT}/75. Projects/Claude Code 모바일 개발/` (스크립트 내 하드코딩)
+> `OBSIDIAN_VAULT` 기본값: `~/Documents/your-obsidian-vault` (볼트 루트만 지정)
+> 소스 디렉토리: `${OBSIDIAN_VAULT}/75. Projects/Claude Code 모바일 개발` (스크립트 내 하드코딩)
 > 커스텀 볼트 루트: `OBSIDIAN_VAULT=~/다른볼트 ./scripts/sync-from-obsidian.sh`
 > ⚠️ 머신마다 볼트 위치가 다를 수 있음. 볼트가 없는 머신에서는 반드시 `OBSIDIAN_VAULT` 지정.
 

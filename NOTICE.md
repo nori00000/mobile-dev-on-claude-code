@@ -39,6 +39,6 @@ name.
 
 ## Repository-Specific Public Readiness / 레포별 공개 준비 상태
 
-Current status: `ready-for-final-visibility-approval`
+Current status: `public` (approved; confirmed via `gh api repos/nori00000/mobile-dev-on-claude-code` on 2026-07-08 — `private:false`, `visibility:public`) <!-- DOC-SYNC: 2026-07-08 갱신, 이전 값 "ready-for-final-visibility-approval"은 이미 완료된 전환을 반영하지 못한 stale 상태였음 -->
 
 Release note: Personal host/user examples were generalized; no tracked bulk deletion required in this pass.

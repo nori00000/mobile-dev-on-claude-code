@@ -3,9 +3,9 @@
 | Field | Value |
 | --- | --- |
 | Repository | `nori00000/mobile-dev-on-claude-code` |
-| Worktree | `<local-public-readiness-worktree>|
-| Public readiness | `ready-for-final-visibility-approval` |
-| Proposed visibility | `public after checks pass` |
+| Worktree | `mobile-dev-on-claude-code` |
+| Public readiness | `approved` <!-- DOC-SYNC: 2026-07-08 실측 — `gh api repos/nori00000/mobile-dev-on-claude-code` 확인 결과 `private:false`, `visibility:public`. 공개 전환이 이미 완료되어 이전 상태값("ready-for-final-visibility-approval")은 stale이었음 --> |
+| Proposed visibility | `public` (전환 완료, 2026-07-08 확인) |
 | Code license | MIT |
 | Docs license | CC BY 4.0 unless otherwise noted |
 | Secret scan | regex scan performed; no dedicated scanner installed locally |
