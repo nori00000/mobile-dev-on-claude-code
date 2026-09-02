@@ -83,6 +83,7 @@ CL_NO_TMUX=1 cl "작업"
 > 소스 디렉토리: `${OBSIDIAN_VAULT}/75. Projects/Claude Code 모바일 개발` (스크립트 내 하드코딩)
 > 커스텀 볼트 루트: `OBSIDIAN_VAULT=~/다른볼트 ./scripts/sync-from-obsidian.sh`
 > ⚠️ 머신마다 볼트 위치가 다를 수 있음. 볼트가 없는 머신에서는 반드시 `OBSIDIAN_VAULT` 지정.
+> 🚨 **실행 전 필독**: `--dry-run`으로 실측한 결과(2026-07-14), Obsidian 원본 노트에는 실제 호스트명/사용자명(예: 실제 머신 이름, 실제 계정명)이 그대로 남아 있고, 이 레포의 `00.`~`05.` 노트는 공개 전환(2026-07-08) 과정에서 `your-main-mac`/`your-username` 등으로 수동 익명화된 상태입니다. 볼트 쪽 익명화가 아직 반영되지 않았기 때문에, `--dry-run` 없이 바로 동기화하면 개인 식별 정보가 공개 레포에 재유입될 수 있습니다. 실행 전 반드시 `--dry-run`으로 diff를 확인하고, 필요하면 볼트 원본을 먼저 익명화하세요.
 
 ## 워크스페이스의 진화
 
@@ -94,7 +95,8 @@ CL_NO_TMUX=1 cl "작업"
 
 ## 라이선스
 
-개인 학습/경험 기록용. 자유롭게 참고하세요.
+소스 코드는 [LICENSE](./LICENSE)(MIT), 문서는 별도 표기가 없는 한 CC BY 4.0 기준으로 제공됩니다.
+저작권 범위와 재사용 조건은 [NOTICE.md](./NOTICE.md)를 참고하세요. <!-- DOC-SYNC: 2026-07-13 갱신 — 기존 "개인 학습/경험 기록용. 자유롭게 참고하세요."는 이 레포가 public 전환되며 NOTICE.md/PROJECT.md/LICENSE에 MIT+CC BY 4.0으로 라이선스가 공식화(2026-07-08)된 뒤에도 갱신되지 않은 stale 문구였음. gh api 재확인(2026-07-13): private:false, visibility:public -->
 
 ---
 

@@ -39,6 +39,8 @@ name.
 
 ## Repository-Specific Public Readiness / 레포별 공개 준비 상태
 
-Current status: `public` (approved; confirmed via `gh api repos/nori00000/mobile-dev-on-claude-code` on 2026-07-08 — `private:false`, `visibility:public`) <!-- DOC-SYNC: 2026-07-08 갱신, 이전 값 "ready-for-final-visibility-approval"은 이미 완료된 전환을 반영하지 못한 stale 상태였음 -->
+Current status: `public` (approved; confirmed via `gh api repos/nori00000/mobile-dev-on-claude-code` on 2026-07-08, re-confirmed 2026-07-14 and 2026-07-16 — `private:false`, `visibility:public`) <!-- DOC-SYNC: 2026-07-08 갱신, 이전 값 "ready-for-final-visibility-approval"은 이미 완료된 전환을 반영하지 못한 stale 상태였음. 2026-07-14/07-16 doc-sync 재검증: gh api 재확인 결과 여전히 public -->
 
 Release note: Personal host/user examples were generalized; no tracked bulk deletion required in this pass.
+
+⚠️ **Sync-back risk (2026-07-14 doc-sync 발견)**: `scripts/sync-from-obsidian.sh --dry-run`으로 확인한 결과, Obsidian 볼트의 원본 노트(`00.`~`05.`)에는 위에서 언급한 익명화 이전의 실제 호스트명/사용자명이 그대로 남아 있습니다. 이 레포의 공개본은 수동으로 별도 익명화되었으나, 그 결과가 볼트로 역반영되지는 않았습니다. 따라서 `sync-from-obsidian.sh`를 dry-run 없이 실행하면 개인 식별 정보가 재유입될 위험이 있습니다 — 실행 전 반드시 diff 검토, 필요 시 볼트 원본 선행 익명화 또는 이 위험이 해소될 때까지 실행 보류를 권장합니다.
