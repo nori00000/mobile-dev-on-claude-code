@@ -68,6 +68,7 @@ fi
 
 # 3. 파일 복사 또는 변경 감지 (README.md, .gitignore, scripts/ 는 건드리지 않음)
 changed=0
+changed_files=()
 for f in "${SOURCE_DIR}"/*.md; do
   [[ -f "$f" ]] || continue
   base="$(basename "$f")"
@@ -80,6 +81,7 @@ for f in "${SOURCE_DIR}"/*.md; do
     if [[ ! -f "${REPO_ROOT}/${base}" ]] || ! cmp -s "$f" "${REPO_ROOT}/${base}"; then
       cp "$f" "${REPO_ROOT}/${base}"
       changed=$((changed + 1))
+      changed_files+=("${base}")
     fi
   fi
 done
@@ -95,27 +97,30 @@ if [[ "${DRY_RUN}" == true ]]; then
   exit 0
 fi
 
-# 5. Git 상태 확인
-cd "${REPO_ROOT}"
-if [[ -z "$(git status --porcelain 2>/dev/null)" ]]; then
+# 5. 이번 동기화가 복사한 파일이 없으면, 기존 작업 트리를 건드리지 않는다.
+# 기존의 staged/unstaged/untracked 작업은 Obsidian 동기화의 대상이 아니다.
+if [[ "${changed}" -eq 0 ]]; then
   echo ""
-  echo "No changes to commit. Already in sync."
+  echo "No synced changes to commit. ${source_count} source files already in sync."
   exit 0
 fi
 
-# 6. 변경 사항 표시
+# 6. 이번 동기화가 복사한 Markdown 파일만 stage한다.
+cd "${REPO_ROOT}"
+git add -- "${changed_files[@]}"
+
+# 7. 변경 사항 표시
 echo ""
 echo "== Changes =="
-git status --short
+git diff --cached --name-status -- "${changed_files[@]}"
 echo ""
 
-# 7. 커밋
+# 8. 커밋
 MESSAGE="${CUSTOM_MESSAGE:-sync from obsidian: $(date -u +%Y-%m-%dT%H:%MZ)}"
-git add -A
-git commit -m "${MESSAGE}" --quiet
+git commit --only -m "${MESSAGE}" --quiet -- "${changed_files[@]}"
 echo "Committed: ${MESSAGE}"
 
-# 8. 푸시
+# 9. 푸시
 if [[ "${NO_PUSH}" == true ]]; then
   echo "Skipping push (--no-push)."
   exit 0
